@@ -1,6 +1,6 @@
-# Duo-Chess — landing page
+# Chess Case — landing page
 
-Static landing page for **Duo-Chess**, the iOS travel chess set built for iPhone Duo: lift the
+Static landing page for **Chess Case**, the iOS travel chess set built for iPhone Duo: lift the
 clasp, unfold the phone, and the board spans both halves of the inner display. Regular iPhones
 and iPads get a virtual lid and have their own section.
 
@@ -46,8 +46,12 @@ drives the app and a StoreKit test session unlocks Pro (and the Legends bundle f
 stage in `desks.jpg`) locally; no real purchase is involved. Install the capture app on the
 simulator before the first run, or `SKTestSession` fails with `notEntitled`.
 
+After the rename to Chess Case, `phone-case.jpg` and `phone-modes.jpg` were retaken on 22 November 2026
+from a capture build with the same bundle ID, driven by hand, on an iPhone 17 Pro simulator (iOS 26.5, light mode, Classic Walnut, Pro locked),
+scaled from 1206 × 2622 to 900 × 1957. The other images show no app name and were left as they were.
+
 Pricing follows `MONETARISIERUNG.md` in the app repository (decision of 6 November 2026):
-free two-player play, Duo-Chess Pro at US$ 9.99, ten collections at US$ 1.99 and three bundles.
+free two-player play, Chess Case Pro at US$ 9.99, ten collections at US$ 1.99 and three bundles.
 Paid offers are marked “planned for launch” until purchases ship. Crystal Ice, Obsidian Gold and Pure Glass are Pro finishes;
 the page doesn't name the free base finishes yet. Collector sets appear as piece line-ups.
 
