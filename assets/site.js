@@ -93,4 +93,99 @@
     clasp.addEventListener('click', () => setOpen(true));
     btn.addEventListener('click', () => setOpen(!demo.classList.contains('open')));
   });
+
+  /* ---- Platforms: iOS / Android. Config and the initial choice come from platforms.js. ---- */
+  const cc = window.ChessCase;
+  if (!cc) return;
+  const lang = (root.lang || 'en').slice(0, 2) === 'de' ? 'de' : 'en';
+  const t = cc.text[lang];
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const svgIcon = (id) => `<svg class="ico" aria-hidden="true"><use href="assets/icons.svg#${id}"/></svg>`;
+
+  /* Store badges: a link once the status allows it, a quiet "coming soon" plate before. */
+  document.querySelectorAll('[data-store]').forEach((slot) => {
+    const key = slot.dataset.store;
+    const p = cc.platforms[key];
+    if (!p) return;
+    const { status, url } = cc.effectiveStatus(key);
+    const lead = (p.lead && p.lead[lang] && p.lead[lang][status]) || t[status];
+    const el = document.createElement(url ? 'a' : 'span');
+    el.className = 'store-badge';
+    if (slot.dataset.variant) el.dataset.variant = slot.dataset.variant;
+    if (url) { el.href = url; el.rel = 'noopener'; }
+    el.setAttribute('aria-label', `${lead} ${p.store}`);
+    el.innerHTML = `${svgIcon(p.icon)}<span><small>${esc(lead)}</small><b>${esc(p.store)}</b></span>`;
+    slot.replaceWith(el);
+  });
+
+  /* Facts under the call to action: devices, requirements, languages, status, version. */
+  document.querySelectorAll('[data-facts]').forEach((list) => {
+    const key = list.dataset.facts;
+    const p = cc.platforms[key];
+    if (!p) return;
+    const { status } = cc.effectiveStatus(key);
+    const rows = p.facts[lang].map(([ico, text]) => `<li class="pill">${svgIcon(ico)} ${esc(text)}</li>`);
+    rows.push(`<li class="pill">${svgIcon('i-info')} ${esc(t.status[status])}${p.version ? ` · ${esc(t.version)} ${esc(p.version)}` : ''}</li>`);
+    list.innerHTML = rows.join('');
+  });
+
+  /* Screenshot galleries, localised per page language. */
+  document.querySelectorAll('[data-gallery]').forEach((list) => {
+    const p = cc.platforms[list.dataset.gallery];
+    if (!p || !p.gallery.length) return;
+    const frame = list.dataset.frame || 'phone android';
+    list.innerHTML = p.gallery.map((s) => `<li><figure>
+      <div class="${esc(frame)}"><div class="screen"><img src="assets/img/${esc(list.dataset.gallery)}/${lang}/${esc(s.file)}" alt="${esc(s.alt[lang])}" width="${s.w}" height="${s.h}" loading="lazy" decoding="async"></div><span class="punch" aria-hidden="true"></span></div>
+      <figcaption>${esc(s.caption[lang])}</figcaption></figure></li>`).join('');
+  });
+
+  /* Privacy links: the URL and the label ("pre-release" until the policy is final) come from the config. */
+  document.querySelectorAll('[data-privacy]').forEach((a) => {
+    const p = cc.platforms[a.dataset.privacy];
+    if (!p) return;
+    a.href = p.privacy[lang];
+    if (a.hasAttribute('data-privacy-label')) a.textContent = (p.privacy.final ? t.privacyFinal : t.privacyDraft).replace('{name}', p.name);
+  });
+
+  const switches = document.querySelectorAll('[data-set-platform]');
+  const live = document.getElementById('platform-live');
+  const langLinks = document.querySelectorAll('a[data-keep-platform]');
+
+  function paint(key) {
+    switches.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.setPlatform === key)));
+    /* Language links carry the platform, so EN ↔ DE never loses the choice. */
+    langLinks.forEach((a) => {
+      const u = new URL(a.getAttribute('href'), location.href);
+      u.searchParams.set('platform', key);
+      a.setAttribute('href', u.pathname.split('/').pop() + u.search + u.hash);
+    });
+    /* Only the visible recording plays. */
+    document.querySelectorAll('video[autoplay]').forEach((v) => {
+      if (v.offsetParent === null) v.pause();
+      else if (!matchMedia('(prefers-reduced-motion: reduce)').matches) v.play().catch(() => {});
+    });
+  }
+
+  function choose(key, button) {
+    if (!cc.platforms[key] || key === root.getAttribute('data-platform')) return;
+    /* Keep the pressed switch where it is on screen, even if content above it changes height. */
+    const before = button ? button.getBoundingClientRect().top : 0;
+    root.setAttribute('data-platform', key);
+    cc.current = key;
+    try { localStorage.setItem('platform', key); } catch (e) {}
+    try {
+      const u = new URL(location.href);
+      u.searchParams.set('platform', key);
+      history.replaceState(history.state, '', u);
+    } catch (e) {}
+    paint(key);
+    if (button) {
+      const delta = button.getBoundingClientRect().top - before;
+      if (Math.abs(delta) > 1) window.scrollBy({ top: delta, behavior: 'instant' });
+    }
+    if (live) live.textContent = t.announce.replace('{name}', cc.platforms[key].name);
+  }
+
+  switches.forEach((b) => b.addEventListener('click', () => choose(b.dataset.setPlatform, b)));
+  paint(cc.current);
 })();

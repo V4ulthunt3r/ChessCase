@@ -3,20 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chess Case — Ein Reiseschach für iPhone Duo</title>
-  <meta name="description" content="Chess Case macht aus dem iPhone Duo ein Reiseschach: Verschluss öffnen, iPhone aufklappen, und das Brett erstreckt sich über beide Displayhälften. Zu zweit, gegen den Computer, mit Schachuhr, Analyse und Training. Zu zweit kostenlos; Pro und Sammlerkollektionen als Einmalkauf. Kein Konto, kein Tracking.">
-  <link rel="alternate" hreflang="en" href="index.html">
-  <link rel="alternate" hreflang="de" href="index-de.html">
-  <link rel="alternate" hreflang="x-default" href="index.html">
+  <title>Chess Case — Ein Reiseschach für iPhone Duo und faltbare Android-Phones</title>
+  <meta name="description" content="Chess Case macht aus einem faltbaren Phone ein Reiseschach: aufklappen, und das Brett steht. Native Apps für iPhone Duo, iPhone und iPad sowie für Android (in Entwicklung). Zu zweit, gegen den Computer, mit Schachuhr, Analyse und Training. Zu zweit kostenlos; Pro und Sammlerkollektionen als Einmalkauf. Kein Konto, kein Tracking.">
+  <link rel="canonical" href="https://v4ulthunt3r.github.io/ChessCase/index-de.html">
+  <link rel="alternate" hreflang="en" href="https://v4ulthunt3r.github.io/ChessCase/">
+  <link rel="alternate" hreflang="de" href="https://v4ulthunt3r.github.io/ChessCase/index-de.html">
+  <link rel="alternate" hreflang="x-default" href="https://v4ulthunt3r.github.io/ChessCase/">
   <meta name="theme-color" content="#F7F1E6" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#170F0A" media="(prefers-color-scheme: dark)">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Chess Case — Ein Reiseschach für iPhone Duo">
-  <meta property="og:description" content="Klapp dein iPhone Duo auf, und die Schachkassette öffnet sich mit. Das Brett erstreckt sich über beide Displayhälften.">
-  <meta property="og:image" content="assets/img/og-image.jpg">
-  <meta property="og:locale" content="de">
-  <meta property="og:locale:alternate" content="en">
+  <meta property="og:site_name" content="Chess Case">
+  <meta property="og:url" content="https://v4ulthunt3r.github.io/ChessCase/index-de.html">
+  <meta property="og:title" content="Chess Case — Ein Reiseschach für iPhone Duo und faltbare Android-Phones">
+  <meta property="og:description" content="Klapp das Phone auf, und die Schachkassette öffnet sich mit. Nativ auf iOS, bald auch auf Android.">
+  <meta property="og:image" content="https://v4ulthunt3r.github.io/ChessCase/assets/img/og-image.jpg">
+  <meta property="og:image:alt" content="Chess Case auf dem aufgeklappten iPhone Duo: ein Brett aus Nussbaum und Ahorn über das ganze innere Display.">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:locale:alternate" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chess Case — Ein Reiseschach für iPhone Duo und faltbare Android-Phones">
+  <meta name="twitter:description" content="Klapp das Phone auf, und die Schachkassette öffnet sich mit. Nativ auf iOS, bald auch auf Android.">
+  <meta name="twitter:image" content="https://v4ulthunt3r.github.io/ChessCase/assets/img/og-image.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Chess Case",
+    "url": "https://v4ulthunt3r.github.io/ChessCase/index-de.html",
+    "image": "https://v4ulthunt3r.github.io/ChessCase/assets/icon-512.png",
+    "description": "Ein Reiseschach für faltbare Phones: aufklappen, und das Brett steht. Zu zweit, gegen den Computer, mit Schachuhr, Analyse und Training.",
+    "applicationCategory": "GameApplication",
+    "applicationSubCategory": "Chess",
+    "operatingSystem": "iOS 18 oder neuer; Android 8.0 oder neuer (in Entwicklung)",
+    "publisher": { "@type": "Organization", "name": "Alpine Swift" },
+    "author": { "@type": "Person", "name": "Peter Hildel" }
+  }
+  </script>
   <link rel="icon" href="assets/favicon-64.png" sizes="64x64" type="image/png">
   <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -29,7 +51,9 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="assets/landing.css?v=4">
+  <script src="assets/platforms.js?v=1"></script>
+  <noscript><style>.platform-pick { display: none; }</style></noscript>
+  <link rel="stylesheet" href="assets/landing.css?v=5">
 </head>
 <body>
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -51,10 +75,11 @@
       <button id="theme-toggle" class="icon-btn" type="button" aria-label="Zwischen hell und dunkel wechseln" aria-pressed="false">
         <svg class="ico" id="theme-icon" aria-hidden="true"><use href="assets/icons.svg#i-moon"/></svg>
       </button>
-      <a class="nav-link" href="index.html" hreflang="en" lang="en">EN</a>
+      <a class="nav-link" href="index.html" hreflang="en" lang="en" data-keep-platform>EN</a>
     </div>
   </div>
 </nav>
+<p class="sr-only" id="platform-live" aria-live="polite"></p>
 
 <main id="main">
 
@@ -63,39 +88,78 @@
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <img class="hero-icon" src="assets/icon-512.png" alt="App-Symbol von Chess Case: ein Springer aus Ahorn und einer aus Nussbaum, die sich über einem Messingscharnier ansehen" width="88" height="88">
-        <p class="eyebrow">Gemacht für iPhone Duo</p>
+        <div class="platform-pick">
+          <div class="platform-switch" role="group" aria-label="Plattform">
+            <button type="button" data-set-platform="ios" aria-pressed="true">iOS</button>
+            <button type="button" data-set-platform="android" aria-pressed="false">Android</button>
+          </div>
+        </div>
+        <p class="eyebrow"><span class="platform-stack">
+          <span data-variant="ios">Gemacht für iPhone Duo</span>
+          <span data-variant="android">Gemacht für faltbare Android-Phones</span>
+        </span></p>
         <h1>Aufklappen.<br><span class="accent">Aufstellen.</span></h1>
-        <p class="lede">
-          Chess Case macht aus dem iPhone Duo ein Reiseschach. Das iPhone ist die Kassette,
-          das Display ist das Brett: Messingverschluss anheben, aufklappen, und das Brett
-          erstreckt sich über beide Displayhälften — Weiß auf der einen Seite des Falzes,
-          Schwarz auf der anderen.
+        <p class="lede platform-stack">
+          <span data-variant="ios">
+            Chess Case macht aus dem iPhone Duo ein Reiseschach. Das iPhone ist die Kassette,
+            das Display ist das Brett: Messingverschluss anheben, aufklappen, und das Brett
+            erstreckt sich über beide Displayhälften — Weiß auf der einen Seite des Falzes,
+            Schwarz auf der anderen.
+          </span>
+          <span data-variant="android">
+            Chess Case macht aus einem faltbaren Android-Phone ein Reiseschach. Zugeklappt ist
+            das Außendisplay der Deckel der Kassette; klapp das Phone auf, und du schaust direkt
+            aufs Brett. Auf anderen Android-Phones öffnet ein virtueller Verschluss die Kassette.
+          </span>
         </p>
         <div class="btn-row">
-          <span class="store-badge" aria-label="Bald im App Store">
-            <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-apple"/></svg>
-            <span><small>Bald im</small><b>App Store</b></span>
+          <span class="platform-stack">
+            <span class="store-badge" data-store="ios" data-variant="ios" aria-label="Bald im App Store">
+              <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-apple"/></svg>
+              <span><small>Bald im</small><b>App Store</b></span>
+            </span>
+            <span class="store-badge" data-store="android" data-variant="android" aria-label="Demnächst bei Google Play">
+              <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-store"/></svg>
+              <span><small>Demnächst bei</small><b>Google Play</b></span>
+            </span>
           </span>
           <a class="btn btn-secondary" href="#finishes">
             Ausführungen ansehen
             <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-arrow-down"/></svg>
           </a>
         </div>
-        <div class="pill-row">
-          <span class="pill"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-hinge"/></svg> Ein Brett über den Falz</span>
-          <span class="pill"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-palette"/></svg> 19 Ausführungen</span>
-          <span class="pill"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-eye-off"/></svg> Kein Konto, kein Tracking</span>
+        <div class="platform-stack">
+          <div class="pill-row" data-variant="ios">
+            <span class="pill"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-hinge"/></svg> Ein Brett über den Falz</span>
+            <span class="pill"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-palette"/></svg> 19 Ausführungen</span>
+            <span class="pill"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-eye-off"/></svg> Kein Konto, kein Tracking</span>
+          </div>
+          <div class="pill-row" data-variant="android">
+            <span class="pill"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-foldable"/></svg> Öffnet mit dem Scharnier</span>
+            <span class="pill"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-palette"/></svg> 19 Ausführungen</span>
+            <span class="pill"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-eye-off"/></svg> Kein Konto, kein Tracking</span>
+          </div>
         </div>
       </div>
 
-      <figure class="hero-figure">
-        <div class="duo">
-          <div class="screen">
-            <img src="assets/img/duo-walnut.jpg" alt="Chess Case auf dem aufgeklappten iPhone Duo: ein Brett „Classic Walnut“ aus Nussbaum und Ahorn füllt das ganze innere Display, links die Ahornfiguren, rechts die Nussbaumfiguren, auf der Leiste steht „White to move“." width="1800" height="1266">
+      <div class="platform-stack">
+        <figure class="hero-figure" data-variant="ios">
+          <div class="duo">
+            <div class="screen">
+              <img src="assets/img/duo-walnut.jpg" alt="Chess Case auf dem aufgeklappten iPhone Duo: ein Brett „Classic Walnut“ aus Nussbaum und Ahorn füllt das ganze innere Display, links die Ahornfiguren, rechts die Nussbaumfiguren, auf der Leiste steht „White to move“." width="1800" height="1266">
+            </div>
           </div>
-        </div>
-        <figcaption>Classic Walnut auf dem iPhone Duo, aufgenommen im Simulator.</figcaption>
-      </figure>
+          <figcaption>Classic Walnut auf dem iPhone Duo, aufgenommen im Simulator.</figcaption>
+        </figure>
+        <figure class="hero-figure" data-variant="android">
+          <div class="fold">
+            <div class="screen">
+              <img src="assets/img/android/de/fold-inner.jpg" alt="Chess Case für Android auf dem inneren Display eines Foldables: ein Brett „Klassischer Nussbaum“ mit den Linien a bis h und den Reihen 1 bis 8 nach einigen Eröffnungszügen, darunter „Weiß am Zug“, darüber die Menü-Taste." width="1200" height="1200" fetchpriority="low">
+            </div>
+          </div>
+          <figcaption>Klassischer Nussbaum auf einem faltbaren Android-Phone · Vorabversion.</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -106,13 +170,34 @@
         <div class="section-head">
           <p class="eyebrow">Die Kassette</p>
           <h2>Das iPhone ist die Kassette. Das Display ist das Brett.</h2>
-          <p>
+          <p data-only="ios">
             Kein Startbildschirm, keine Menüs. Chess Case öffnet sich als geschlossene
             Schachkassette in deiner gewählten Ausführung. Klapp das iPhone Duo auf, und du
             schaust direkt aufs Brett.
           </p>
+          <p data-only="android">
+            Kein Startbildschirm, keine Menüs. Chess Case öffnet sich als geschlossene
+            Schachkassette. Klapp ein faltbares Phone auf, und du schaust direkt aufs Brett.
+          </p>
         </div>
-        <ul class="feature-list">
+        <ul class="feature-list" data-only="android">
+          <li>
+            <span class="badge"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-lock"/></svg></span>
+            <h3>Das Außendisplay ist der Deckel</h3>
+            <p>Zugeklappt zeigt das Außendisplay nur die geschlossene Kassette — kein Brett, kein Menü. Ein Tipp auf den Verschluss öffnet sie nicht; der Weg hinein ist das Phone selbst.</p>
+          </li>
+          <li>
+            <span class="badge"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-foldable"/></svg></span>
+            <h3>Aufklappen und spielen</h3>
+            <p>Auf Foldables, deren Scharniersensor Apps zur Verfügung steht, öffnet das Aufklappen die Kassette, und das Brett füllt das innere Display.</p>
+          </li>
+          <li>
+            <span class="badge"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-fold"/></svg></span>
+            <h3>Mitten in der Partie zuklappen</h3>
+            <p>Zuklappen pausiert Partie und Uhren. Klappst du wieder auf, geht es dort weiter; eine Partie, die du selbst pausiert hast, bleibt pausiert.</p>
+          </li>
+        </ul>
+        <ul class="feature-list" data-only="ios">
           <li>
             <span class="badge"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-lock"/></svg></span>
             <h3>Verschluss heben, dann aufklappen</h3>
@@ -130,7 +215,21 @@
           </li>
         </ul>
       </div>
-      <figure class="reveal" style="margin:0">
+      <figure class="reveal fold-pair" data-only="android">
+        <div class="phone android cover">
+          <div class="screen">
+            <img src="assets/img/android/de/fold-cover.jpg" alt="Das Außendisplay eines zugeklappten Android-Phones: die geschlossene Nussbaumkassette mit Messingscharnieren links, Messingverschluss rechts, eingraviertem Springer, „Chess Case“ und „Zum Spielen das Gerät aufklappen“." width="750" height="1200" loading="lazy" decoding="async">
+          </div>
+          <span class="punch" aria-hidden="true"></span>
+        </div>
+        <div class="fold wide">
+          <div class="screen">
+            <img src="assets/img/android/de/fold-wide.jpg" alt="Eine Partie auf dem aufgeklappten inneren Display eines breiteren Foldables im Querformat: links das Brett Classic Walnut, rechts „Weiß am Zug“, „Pausieren“ und „Zugverlauf“." width="1440" height="1080" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <figcaption class="fig-note">Zu und offen · Vorabversion für Android.</figcaption>
+      </figure>
+      <figure class="reveal" style="margin:0" data-only="ios">
         <div class="duo">
           <div class="screen">
             <img src="assets/img/duo-tournament.jpg" alt="Eine laufende Partie in der Ausführung Tournament Green: elfenbeinfarbene und salbeigrüne Felder über beide Hälften des iPhone-Duo-Displays." width="1800" height="1266" loading="lazy">
@@ -149,10 +248,13 @@
     <div class="wrap">
       <div class="section-head center reveal">
         <p class="eyebrow">In Aktion</p>
-        <h2>Eine ganze Partie in dreißig Sekunden.</h2>
-        <p>Schäfermatt auf Classic Walnut mit eingeschalteten fließenden Zügen: Legale Felder erscheinen als Punkte, der Springer springt, die Dame schlägt auf f7 — und der siegreiche König steigt aufs Podest.</p>
+        <h2 data-only="ios">Eine ganze Partie in dreißig Sekunden.</h2>
+        <p data-only="ios">Schäfermatt auf Classic Walnut mit eingeschalteten fließenden Zügen: Legale Felder erscheinen als Punkte, der Springer springt, die Dame schlägt auf f7 — und der siegreiche König steigt aufs Podest.</p>
+        <h2 data-only="android">Ein erster Blick auf Android.</h2>
+        <p data-only="android">Bildschirme aus der Vorabversion auf einem Phone: zu zweit auf Klassischer Nussbaum, ein Uhrenduell auf Turniergrün und das Analysebrett auf Ozeanblau. Die Android-App heißt die Ausführungen auf Deutsch. Bis zur Veröffentlichung kann sich die App noch ändern.</p>
       </div>
-      <figure class="reveal game-figure">
+      <ul class="gallery reveal" data-only="android" data-gallery="android" role="list" tabindex="0" aria-label="Bildschirme aus Chess Case für Android"></ul>
+      <figure class="reveal game-figure" data-only="ios">
         <div class="duo">
           <div class="screen">
             <video src="assets/img/duo-game.mp4" poster="assets/img/duo-game-poster.jpg" autoplay muted loop playsinline preload="metadata" width="1440" height="1012"
@@ -171,9 +273,13 @@
         <div class="section-head">
           <p class="eyebrow">Fünf Arten zu spielen</p>
           <h2>Am Tisch zu zweit oder für dich allein.</h2>
-          <p>
+          <p data-only="ios">
             Ein neues Spiel beginnt mit fünf Modus-Karten. Wähl eine aus, und es erscheinen nur
             die Optionen, die dafür zählen — dann steht das Brett. Klassisches Schach zu zweit ist kostenlos und unbegrenzt.
+          </p>
+          <p data-only="android">
+            Menü → Neues Spiel bietet fünf Modi: zu zweit an einem Gerät, allein gegen den Computer,
+            Uhrenduell, Analyse und Training. Klassisches Schach zu zweit ist kostenlos und unbegrenzt.
           </p>
         </div>
         <ul class="modes">
@@ -185,14 +291,16 @@
           <li class="mode">
             <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-user"/></svg>
             <h3>Allein üben</h3>
-            <p>Wähl deine Farbe und wie weit der Computer vorausdenkt.</p>
-            <div class="chips"><span class="chip">Relaxed</span><span class="chip">Considered</span><span class="chip">Sharp</span></div>
+            <p data-only="ios">Wähl deine Farbe und wie weit der Computer vorausdenkt.</p>
+            <p data-only="android">Spiel gegen den Computer in drei Stärken.</p>
+            <div class="chips" data-only="ios"><span class="chip">Relaxed</span><span class="chip">Considered</span><span class="chip">Sharp</span></div>
           </li>
           <li class="mode">
             <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-clock"/></svg>
             <h3>Uhrenduell</h3>
-            <p>An jedem Ende eine eingravierte Uhr, zum jeweiligen Spieler gedreht. Jeder Zug schaltet die Uhr um und schreibt das Inkrement gut.</p>
-            <div class="chips"><span class="chip">3 + 2</span><span class="chip">5 Minuten</span><span class="chip">10 + 5</span></div>
+            <p data-only="ios">An jedem Ende eine eingravierte Uhr, zum jeweiligen Spieler gedreht. Jeder Zug schaltet die Uhr um und schreibt das Inkrement gut.</p>
+            <p data-only="android">Beide Uhren laufen unter dem Brett; jeder Zug schaltet sie um.</p>
+            <div class="chips" data-only="ios"><span class="chip">3 + 2</span><span class="chip">5 Minuten</span><span class="chip">10 + 5</span></div>
           </li>
           <li class="mode">
             <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-branch"/></svg>
@@ -202,12 +310,22 @@
           <li class="mode">
             <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-bulb"/></svg>
             <h3>Training <span class="pro-tag">Pro</span></h3>
-            <p>Vier Mattbilder mit optionalen Hinweisen. Ein Zug, der das Matt verfehlt, setzt die Stellung sanft zurück; gelöste Lektionen bleiben gespeichert. Der vollständige Trainer gehört zu Pro.</p>
-            <div class="chips"><span class="chip">Grundreihe</span><span class="chip">König und Dame</span><span class="chip">Springernetz</span><span class="chip">Läufernetz</span></div>
+            <p data-only="ios">Vier Mattbilder mit optionalen Hinweisen. Ein Zug, der das Matt verfehlt, setzt die Stellung sanft zurück; gelöste Lektionen bleiben gespeichert. Der vollständige Trainer gehört zu Pro.</p>
+            <p data-only="android">Vier Mattbilder zum Lösen, mit Hinweisen und auf dem Gerät gespeichertem Fortschritt. Training gehört zu Pro.</p>
+            <div class="chips" data-only="ios"><span class="chip">Grundreihe</span><span class="chip">König und Dame</span><span class="chip">Springernetz</span><span class="chip">Läufernetz</span></div>
           </li>
         </ul>
       </div>
-      <div class="reveal" style="display:grid;justify-items:center">
+      <div class="reveal" style="display:grid;justify-items:center" data-only="android">
+        <div class="phone android">
+          <div class="screen">
+            <img src="assets/img/android/de/phone-clock.jpg" alt="Ein Uhrenduell in Chess Case für Android: Brett „Turniergrün“, darunter „Schwarz am Zug“ und die Restzeit beider Seiten." width="720" height="1280" loading="lazy" decoding="async">
+          </div>
+          <span class="punch" aria-hidden="true"></span>
+        </div>
+        <p class="fig-note" style="margin-top:1rem">Uhrenduell · Vorabversion für Android, Oberfläche auf Deutsch.</p>
+      </div>
+      <div class="reveal" style="display:grid;justify-items:center" data-only="ios">
         <div class="phone">
           <div class="screen">
             <img src="assets/img/phone-modes.jpg" alt="Das Blatt „Set the board“ in Chess Case: Karten für Two players, Solo practice, Clock duel, Analysis board und Training auf elfenbeinfarbenem Papier." width="900" height="1957" loading="lazy">
@@ -225,14 +343,38 @@
       <div class="section-head center reveal">
         <p class="eyebrow">Standard-Ausführungen</p>
         <h2>Jedes Brett bringt seine Kassette mit.</h2>
-        <p>
+        <p data-only="ios">
           Jede Ausführung hat ihr eigenes Brett, eigene Figuren, Kassette und Verschluss. Ausgewählte
           Basis-Ausführungen sind kostenlos; Crystal Ice, Obsidian Gold und Pure Glass
           gehören zu Chess Case Pro. Wechseln geht jederzeit — die Partie bleibt, wo sie ist.
           Probier sie hier auf dem Duo aus.
         </p>
+        <p data-only="android">
+          Neun Standard-Ausführungen mit eigenem Brett und eigenen Figuren, dazu die zehn
+          Sammlerkollektionen weiter unten. Jede Ausführung lässt sich in der Designkollektion
+          ansehen, bevor du sie wählst.
+        </p>
       </div>
-      <div class="finish-stage reveal" data-finishes>
+      <div class="finish-android reveal" data-only="android">
+        <div class="phone android">
+          <div class="screen">
+            <img src="assets/img/android/de/phone-finishes.jpg" alt="Die Designkollektion in Chess Case für Android: eine Liste mit Brettvorschauen — Klassischer Nussbaum (kostenlos, aktiv), Turniergrün und Ozeanblau (kostenlos), Räuchereiche, Graphit, Lavendel und Kristalleis (Pro, gesperrt)." width="720" height="1280" loading="lazy" decoding="async">
+          </div>
+          <span class="punch" aria-hidden="true"></span>
+        </div>
+        <div class="groups">
+          <div>
+            <h3>Kostenlos</h3>
+            <div class="chips"><span class="chip">Klassischer Nussbaum</span><span class="chip">Turniergrün</span><span class="chip">Ozeanblau</span></div>
+          </div>
+          <div>
+            <h3>Mit Chess Case Pro <span class="pro-tag">Pro</span></h3>
+            <div class="chips"><span class="chip">Räuchereiche</span><span class="chip">Graphit</span><span class="chip">Lavendel</span><span class="chip">Kristalleis</span><span class="chip">Obsidiangold</span><span class="chip">Reines Glas</span></div>
+          </div>
+          <p class="fig-note" style="text-align:left">Designkollektion · Vorabversion für Android.</p>
+        </div>
+      </div>
+      <div class="finish-stage reveal" data-finishes data-only="ios">
         <div class="duo">
           <div class="screen">
             <img class="on" data-key="walnut" src="assets/img/duo-walnut.jpg" alt="Das Brett Classic Walnut auf dem iPhone Duo." width="1800" height="1266" loading="lazy">
@@ -286,14 +428,37 @@
       <div class="reveal">
         <div class="section-head">
           <p class="eyebrow">Halb aufgeklappt</p>
-          <h2>Wie ein Laptop aufstellen. Oben entsteht ein Pult.</h2>
-          <p>
+          <h2 data-only="ios">Wie ein Laptop aufstellen. Oben entsteht ein Pult.</h2>
+          <p data-only="ios">
             Stell das Duo halb aufgeklappt auf den Tisch, und das Brett liegt flach auf der unteren
             Hälfte. Die obere Hälfte wird zum Pult, das der Partie folgt — und verschwindet wieder,
             sobald du ganz aufklappst.
           </p>
+          <h2 data-only="android">Wie ein Laptop aufstellen. Das Brett liegt flach.</h2>
+          <p data-only="android">
+            Stell ein Foldable halb aufgeklappt mit waagerechtem Falz auf, und Chess Case wechselt
+            von selbst in die Tischansicht: Das Brett liegt auf der unteren Hälfte, die obere zeigt
+            die Partie. Auf jedem Phone kannst du die Ansicht auch von Hand wählen.
+          </p>
         </div>
-        <ul class="feature-list">
+        <ul class="feature-list" data-only="android">
+          <li>
+            <span class="badge"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-knight"/></svg></span>
+            <h3>Die Partie in Schräglage</h3>
+            <p>Oben siehst du dieselbe Stellung in Perspektive, wer am Zug ist, den letzten Zug und die geschlagenen Figuren.</p>
+          </li>
+          <li>
+            <span class="badge"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-bulb"/></svg></span>
+            <h3>Hinweise und Analysewerkzeuge <span class="pro-tag">Pro</span></h3>
+            <p>Werkzeuge für Training und Analyse auf der oberen Hälfte, während unten das Brett frei bleibt.</p>
+          </li>
+          <li>
+            <span class="badge"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-clock"/></svg></span>
+            <h3>Schachuhr <span class="pro-tag">Pro</span></h3>
+            <p>Eine eigenständige Schachuhr für ein echtes Brett auf dem Tisch.</p>
+          </li>
+        </ul>
+        <ul class="feature-list" data-only="ios">
           <li>
             <span class="badge"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-knight"/></svg></span>
             <h3>Schachbühne</h3>
@@ -316,7 +481,15 @@
           </li>
         </ul>
       </div>
-      <figure class="reveal tabletop-figure">
+      <figure class="reveal tabletop-figure" data-only="android">
+        <div class="fold">
+          <div class="screen">
+            <img src="assets/img/android/de/fold-tabletop.jpg" alt="Tischansicht auf einem faltbaren Android-Phone: Oben das Brett „Klassischer Nussbaum“ in Perspektive mit „Weiß am Zug“, letztem Zug und geschlagenen Figuren, unten liegt das flache Brett." width="1200" height="1200" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <figcaption class="fig-note">Tischansicht · Vorabversion für Android.</figcaption>
+      </figure>
+      <figure class="reveal tabletop-figure" data-only="ios">
         <div class="tt" role="img" aria-label="Tischansicht mit Viking Voyage: Oben zeigt die Schachbühne die Stellung in 3D und „Black to move · Last move e4“, unten liegt das flache Brett.">
           <div class="tt-half tt-top"></div>
           <div class="tt-half tt-bottom"></div>
@@ -341,61 +514,61 @@
       </div>
       <div class="collections">
         <article class="collection wide reveal">
-          <header><h3>Ultimate Vehicle Bundle</h3><span class="price-pill">4 Kollektionen · <b>5,99 $</b></span></header>
+          <header><h3>Ultimate Vehicle Bundle</h3><span class="price-pill">4 Kollektionen<span data-only="ios"> · <b>5,99 $</b></span></span></header>
           <div class="holiday-grid">
             <figure><div class="lineup vehicles">
                 <img src="assets/pieces/racers-white-pawn.webp" alt="" width="240" height="240" loading="lazy">
                 <img src="assets/pieces/racers-black-rook.webp" alt="" width="240" height="240" loading="lazy">
                 <img src="assets/pieces/racers-white-queen.webp" alt="" width="240" height="240" loading="lazy">
-              </div><figcaption>Pocket Racers<small>Sammlerautos 1:64 · 1,99 $</small></figcaption></figure>
+              </div><figcaption>Pocket Racers<small>Sammlerautos 1:64<span data-only="ios"> · 1,99 $</span></small></figcaption></figure>
             <figure><div class="lineup vehicles">
                 <img src="assets/pieces/heavyDuty-white-pawn.webp" alt="" width="240" height="240" loading="lazy">
                 <img src="assets/pieces/heavyDuty-black-rook.webp" alt="" width="240" height="240" loading="lazy">
                 <img src="assets/pieces/heavyDuty-white-queen.webp" alt="" width="240" height="240" loading="lazy">
-              </div><figcaption>Heavy Duty<small>Baumaschinen · 1,99 $</small></figcaption></figure>
+              </div><figcaption>Heavy Duty<small>Baumaschinen<span data-only="ios"> · 1,99 $</span></small></figcaption></figure>
             <figure><div class="lineup vehicles">
                 <img src="assets/pieces/skySquadron-white-pawn.webp" alt="" width="240" height="240" loading="lazy">
                 <img src="assets/pieces/skySquadron-black-knight.webp" alt="" width="240" height="240" loading="lazy">
                 <img src="assets/pieces/skySquadron-white-queen.webp" alt="" width="240" height="240" loading="lazy">
-              </div><figcaption>Sky Squadron<small>Sammlerflugzeuge · 1,99 $</small></figcaption></figure>
+              </div><figcaption>Sky Squadron<small>Sammlerflugzeuge<span data-only="ios"> · 1,99 $</span></small></figcaption></figure>
             <figure><div class="lineup vehicles">
                 <img src="assets/pieces/fieldCommand-white-pawn.webp" alt="" width="240" height="240" loading="lazy">
                 <img src="assets/pieces/fieldCommand-black-rook.webp" alt="" width="240" height="240" loading="lazy">
                 <img src="assets/pieces/fieldCommand-white-queen.webp" alt="" width="240" height="240" loading="lazy">
-              </div><figcaption>Field Command<small>Militärminiaturen · 1,99 $</small></figcaption></figure>
+              </div><figcaption>Field Command<small>Militärminiaturen<span data-only="ios"> · 1,99 $</span></small></figcaption></figure>
           </div>
           <p>Sechs Fahrzeugrollen pro Seite. Autos fahren auf ihr Feld, statt zu hüpfen, Maschinen bewegen sich mit Gewicht, Flugzeuge steigen und legen sich in die Kurve — und die Dame von Field Command ist ein Hubschrauber.</p>
         </article>
 
         <article class="collection wide reveal">
-          <header><h3>Holiday Collection Bundle</h3><span class="price-pill">4 Kollektionen · <b>5,99 $</b></span></header>
+          <header><h3>Holiday Collection Bundle</h3><span class="price-pill">4 Kollektionen<span data-only="ios"> · <b>5,99 $</b></span></span></header>
           <div class="holiday-grid">
             <figure><div class="lineup">
                 <img src="assets/pieces/christmas-white-pawn.webp" alt="" width="240" height="240" loading="lazy">
                 <img src="assets/pieces/christmas-black-knight.webp" alt="" width="240" height="240" loading="lazy">
                 <img src="assets/pieces/christmas-black-king.webp" alt="" width="240" height="240" loading="lazy">
-              </div><figcaption>Christmas Eve<small>Schneemänner, Rentiere, Weihnachtsmann · 1,99 $</small></figcaption></figure>
+              </div><figcaption>Christmas Eve<small>Schneemänner, Rentiere, Weihnachtsmann<span data-only="ios"> · 1,99 $</span></small></figcaption></figure>
             <figure><div class="lineup">
                 <img src="assets/pieces/easter-white-pawn.webp" alt="" width="240" height="240" loading="lazy">
                 <img src="assets/pieces/easter-black-knight.webp" alt="" width="240" height="240" loading="lazy">
                 <img src="assets/pieces/easter-black-king.webp" alt="" width="240" height="240" loading="lazy">
-              </div><figcaption>Easter Garden<small>Bemalte Eier, gekrönte Hasen · 1,99 $</small></figcaption></figure>
+              </div><figcaption>Easter Garden<small>Bemalte Eier, gekrönte Hasen<span data-only="ios"> · 1,99 $</span></small></figcaption></figure>
             <figure><div class="lineup">
                 <img src="assets/pieces/halloween-white-pawn.webp" alt="" width="240" height="240" loading="lazy">
                 <img src="assets/pieces/halloween-black-knight.webp" alt="" width="240" height="240" loading="lazy">
                 <img src="assets/pieces/halloween-black-king.webp" alt="" width="240" height="240" loading="lazy">
-              </div><figcaption>Halloween Night<small>Kürbisse, Fledermäuse, eine Geisterdame · 1,99 $</small></figcaption></figure>
+              </div><figcaption>Halloween Night<small>Kürbisse, Fledermäuse, eine Geisterdame<span data-only="ios"> · 1,99 $</span></small></figcaption></figure>
             <figure><div class="lineup">
                 <img src="assets/pieces/newYear-white-pawn.webp" alt="" width="240" height="240" loading="lazy">
                 <img src="assets/pieces/newYear-black-knight.webp" alt="" width="240" height="240" loading="lazy">
                 <img src="assets/pieces/newYear-black-king.webp" alt="" width="240" height="240" loading="lazy">
-              </div><figcaption>Midnight Celebration<small>Sterne, ein Partypony, die Mitternachtsuhr · 1,99 $</small></figcaption></figure>
+              </div><figcaption>Midnight Celebration<small>Sterne, ein Partypony, die Mitternachtsuhr<span data-only="ios"> · 1,99 $</span></small></figcaption></figure>
           </div>
           <p>Verspielte Spielzeugminiaturen mit eigenen Kronen, Höhen und Silhouetten, damit jeder Rang auch in Spielgröße lesbar bleibt. Jede Kassette bekommt ihre eigene Gravur und ein Emaille-Medaillon — spielbar das ganze Jahr.</p>
         </article>
 
         <article class="collection wide reveal">
-          <header><h3>Legends Collection Bundle</h3><span class="price-pill">2 Kollektionen · <b>2,99 $</b></span></header>
+          <header><h3>Legends Collection Bundle</h3><span class="price-pill">2 Kollektionen<span data-only="ios"> · <b>2,99 $</b></span></span></header>
           <div class="holiday-grid legends">
             <figure><div class="lineup">
                 <img src="assets/pieces/kingdom-white-pawn.webp" alt="" width="240" height="240" loading="lazy">
@@ -404,7 +577,7 @@
                 <img src="assets/pieces/kingdom-black-rook.webp" alt="" width="240" height="240" loading="lazy">
                 <img src="assets/pieces/kingdom-white-queen.webp" alt="" width="240" height="240" loading="lazy">
                 <img src="assets/pieces/kingdom-black-king.webp" alt="" width="240" height="240" loading="lazy">
-              </div><figcaption>Kingdom Knights<small>Silber &amp; Blau gegen Stahl &amp; Purpur · 1,99 $</small></figcaption></figure>
+              </div><figcaption>Kingdom Knights<small>Silber &amp; Blau gegen Stahl &amp; Purpur<span data-only="ios"> · 1,99 $</span></small></figcaption></figure>
             <figure><div class="lineup">
                 <img src="assets/pieces/vikings-white-pawn.webp" alt="" width="240" height="240" loading="lazy">
                 <img src="assets/pieces/vikings-black-knight.webp" alt="" width="240" height="240" loading="lazy">
@@ -412,7 +585,7 @@
                 <img src="assets/pieces/vikings-black-rook.webp" alt="" width="240" height="240" loading="lazy">
                 <img src="assets/pieces/vikings-white-queen.webp" alt="" width="240" height="240" loading="lazy">
                 <img src="assets/pieces/vikings-black-king.webp" alt="" width="240" height="240" loading="lazy">
-              </div><figcaption>Viking Voyage<small>Esche &amp; Petrol gegen Eiche &amp; Rost · 1,99 $</small></figcaption></figure>
+              </div><figcaption>Viking Voyage<small>Esche &amp; Petrol gegen Eiche &amp; Rost<span data-only="ios"> · 1,99 $</span></small></figcaption></figure>
           </div>
           <p>Zwei verfeindete Ritterhäuser mit Schildwachen, Reitern und Burgtürmen — und zwei Wikingerclans mit Drachenbooten, Runenseherinnen und einem gekrönten Jarl, in einer Kassette aus Eichenplanken mit Eisenbändern.</p>
         </article>
@@ -434,34 +607,40 @@
           <p class="plan-price">0 $</p>
           <ul>
             <li>Unbegrenzt klassisches Schach zu zweit</li>
-            <li>Aufklappen und spielen — Kassette, Verschluss und das Brett über den Falz</li>
-            <li>Ausgewählte Basis-Ausführungen</li>
-            <li>Die Schachbühne, wenn das Duo halb aufgeklappt steht</li>
+            <li data-only="ios">Aufklappen und spielen — Kassette, Verschluss und das Brett über den Falz</li>
+            <li data-only="android">Aufklappen und spielen — die Kassette öffnet mit dem Scharnier, auf anderen Phones mit dem Verschluss</li>
+            <li data-only="ios">Ausgewählte Basis-Ausführungen</li>
+            <li data-only="android">Klassischer Nussbaum, Turniergrün und Ozeanblau</li>
+            <li data-only="ios">Die Schachbühne, wenn das Duo halb aufgeklappt steht</li>
+            <li data-only="android">Allein, Uhrenduell und Analyse</li>
             <li>Keine Werbung zum Launch</li>
           </ul>
         </div>
         <div class="plan plan-pro">
           <h3>Chess Case Pro</h3>
-          <p class="plan-price">9,99 $ <small>einmalig</small></p>
+          <p class="plan-price"><span data-only="ios">9,99 $ <small>einmalig</small></span><span data-only="android">Einmalkauf</span></p>
           <ul>
-            <li>Crystal Ice, Obsidian Gold und Pure Glass</li>
-            <li>Erweiterte Modi für das halb aufgeklappte Duo: Trainingsstation, Analysepult, Schachuhr</li>
+            <li data-only="ios">Crystal Ice, Obsidian Gold und Pure Glass</li>
+            <li data-only="android">Sechs weitere Ausführungen: Räuchereiche, Graphit, Lavendel, Kristalleis, Obsidiangold und Reines Glas</li>
+            <li data-only="ios">Erweiterte Modi für das halb aufgeklappte Duo: Trainingsstation, Analysepult, Schachuhr</li>
+            <li data-only="android">Werkzeuge für Hinweise und Analyse in der Tischansicht</li>
             <li>Die eigenständige Uhr für ein echtes Brett</li>
             <li>Der vollständige Schachtrainer</li>
           </ul>
         </div>
         <div class="plan">
           <h3>Kollektionen</h3>
-          <p class="plan-price">1,99 $ <small>je Kollektion</small></p>
+          <p class="plan-price"><span data-only="ios">1,99 $ <small>je Kollektion</small></span><span data-only="android">Einmalkauf <small>je Kollektion</small></span></p>
           <ul>
             <li>Zehn Sammlersätze, einzeln kaufbar und unabhängig von Pro</li>
-            <li>Ultimate Vehicle Bundle — vier Fahrzeugsätze für 5,99 $</li>
-            <li>Holiday Collection Bundle — vier Feiertagssätze für 5,99 $</li>
-            <li>Legends Collection Bundle — Ritter und Wikinger für 2,99 $</li>
+            <li>Ultimate Vehicle Bundle — vier Fahrzeugsätze<span data-only="ios"> für 5,99 $</span></li>
+            <li>Holiday Collection Bundle — vier Feiertagssätze<span data-only="ios"> für 5,99 $</span></li>
+            <li>Legends Collection Bundle — Ritter und Wikinger<span data-only="ios"> für 2,99 $</span></li>
           </ul>
         </div>
       </div>
-      <p class="plans-note tiny reveal"><span class="tag tag-plan">Zum Launch geplant</span> Die kostenpflichtigen Angebote sind zum Launch geplant. Die Preise sind US-Launchpreise; in deinem Land können sie abweichen. Alle Käufe sind dauerhafte Einmalkäufe und lassen sich mit demselben Apple Account auf jedem Gerät wiederherstellen. Pro enthält die Kollektionen nicht.</p>
+      <p class="plans-note tiny reveal" data-only="ios"><span class="tag tag-plan">Zum Launch geplant</span> Die kostenpflichtigen Angebote sind zum Launch geplant. Die Preise sind US-Launchpreise; in deinem Land können sie abweichen. Alle Käufe sind dauerhafte Einmalkäufe und lassen sich mit demselben Apple Account auf jedem Gerät wiederherstellen. Pro enthält die Kollektionen nicht.</p>
+      <p class="plans-note tiny reveal" data-only="android"><span class="tag tag-plan">Zum Launch geplant</span> Die kostenpflichtigen Angebote sind zum Launch geplant. Google Play zeigt dir den Preis in deiner Währung vor dem Kauf. Alle Käufe sind dauerhafte Einmalkäufe über Google Play und lassen sich mit demselben Google-Konto wiederherstellen. Pro enthält die Kollektionen nicht.</p>
     </div>
   </section>
 
@@ -476,14 +655,21 @@
         <article class="card reveal">
           <span class="badge"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-motion"/></svg></span>
           <h3>Fließende Züge</h3>
-          <p>Optional: Springer springen im Bogen, Läufer neigen sich, Bauern machen einen Schritt, Türme gleiten dicht übers Brett. Jede Ausführung stimmt ihre eigene Bewegung ab. Standardmäßig aus.</p>
+          <p data-only="ios">Optional: Springer springen im Bogen, Läufer neigen sich, Bauern machen einen Schritt, Türme gleiten dicht übers Brett. Jede Ausführung stimmt ihre eigene Bewegung ab. Standardmäßig aus.</p>
+          <p data-only="android">Optionale Figurenanimation, standardmäßig aus — und ein eigener Schalter für reduzierte Bewegung.</p>
         </article>
         <article class="card reveal">
           <span class="badge"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-sound"/></svg></span>
           <h3>Holz auf Holz</h3>
-          <p>Ein trockenes Aufsetzen, ein tieferer Schlag beim Schlagen, zwei kurze Klicks bei der Rochade — mit passender Haptik. Ton und Haptik lassen sich getrennt schalten und folgen dem Stummschalter.</p>
+          <p data-only="ios">Ein trockenes Aufsetzen, ein tieferer Schlag beim Schlagen, zwei kurze Klicks bei der Rochade — mit passender Haptik. Ton und Haptik lassen sich getrennt schalten und folgen dem Stummschalter.</p>
+          <p data-only="android">Dieselben Holzklänge beim Aufsetzen, mit eigener Lautstärkeregelung, dazu Haptik. Ton und Haptik lassen sich getrennt schalten.</p>
         </article>
-        <article class="card reveal">
+        <article class="card reveal" data-only="android">
+          <span class="badge"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-trophy"/></svg></span>
+          <h3>Ergebnis und Revanche</h3>
+          <p>Matt, Patt und Remis werden erkannt und auf dem Brett angezeigt. Die Revanche ist einen Tipp entfernt.</p>
+        </article>
+        <article class="card reveal" data-only="ios">
           <span class="badge"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-trophy"/></svg></span>
           <h3>Ein Podest für den Sieger</h3>
           <p>Am Ende erhebt sich der siegreiche König zwischen Dame und Turm — in den Figuren deiner Ausführung. Bei Remis verbeugen sich beide Könige. Die Schlussstellung bleibt einen Tipp entfernt.</p>
@@ -491,14 +677,25 @@
         <article class="card reveal">
           <span class="badge"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-resize"/></svg></span>
           <h3>Figurengröße</h3>
-          <p>Figuren von 70 % bis 120 % skalieren, mit Live-Vorschau. Felder und Tippflächen behalten ihre Größe.</p>
+          <p data-only="ios">Figuren von 70 % bis 120 % skalieren, mit Live-Vorschau. Felder und Tippflächen behalten ihre Größe.</p>
+          <p data-only="android">Figuren von 70 % bis 120 % skalieren, passend zu deinem Display.</p>
         </article>
-        <article class="card reveal">
+        <article class="card reveal" data-only="android">
+          <span class="badge"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-trophy"/></svg></span>
+          <h3>Statistik und Erfolge</h3>
+          <p>Partie- und Solo-Statistik, Trainingsfortschritt und Erfolge bleiben auf dem Gerät. Keine Anmeldung nötig.</p>
+        </article>
+        <article class="card reveal" data-only="ios">
           <span class="badge"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-trophy"/></svg></span>
           <h3>Game Center</h3>
           <p>Zwölf Erfolge, von der ersten Rochade bis zu allen vier Lektionen ohne Hinweis, und Bestenlisten für Siege gegen den Computer in jeder Stärke. Optional — als Gast spielst du genauso.</p>
         </article>
-        <article class="card reveal">
+        <article class="card reveal" data-only="android">
+          <span class="badge"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-access"/></svg></span>
+          <h3>Wie du es magst</h3>
+          <p>Deutsch oder Englisch oder wie das System. Hell, dunkel oder wie das System, und reduzierte Bewegung, wann immer du willst.</p>
+        </article>
+        <article class="card reveal" data-only="ios">
           <span class="badge"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-access"/></svg></span>
           <h3>Für alle</h3>
           <p>VoiceOver benennt jedes Feld und sagt legale Züge an. Dynamische Schrift, „Bewegung reduzieren“, „Transparenz reduzieren“ und „Kontrast erhöhen“ werden berücksichtigt.</p>
@@ -509,7 +706,45 @@
 
   <!-- ============================ Other iPhones ============================ -->
   <section class="block tinted" id="iphone">
-    <div class="wrap split">
+    <div class="wrap split" data-only="android">
+      <div class="reveal">
+        <div class="section-head">
+          <p class="eyebrow">Auch auf Android-Phones</p>
+          <h2>Ein Verschluss statt eines Scharniers.</h2>
+          <p>
+            Phones ohne Scharniersensor, den Apps nutzen können, bekommen einen virtuellen Verschluss:
+            Tipp darauf, und die Kassette öffnet sich. „Koffer schließen“ in der App schließt sie wieder.
+          </p>
+        </div>
+        <ul class="feature-list">
+          <li>
+            <span class="badge"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-phone"/></svg></span>
+            <h3>Gleiches Spiel, gleiche Ausführungen</h3>
+            <p>Alle Modi und Ausführungen laufen auf Android-Phones ab Android 8.0, im Hoch- und im Querformat.</p>
+          </li>
+          <li>
+            <span class="badge"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-restore"/></svg></span>
+            <h3>Weiter, wo du aufgehört hast</h3>
+            <p>Deine Partie wird auf dem Gerät gespeichert. Drehen, App-Wechsel oder ein Sprachwechsel lassen die Stellung, wie sie ist.</p>
+          </li>
+          <li>
+            <span class="badge"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-globe"/></svg></span>
+            <h3>Deutsch und Englisch</h3>
+            <p>Die Android-App spricht beide Sprachen und folgt der Systemsprache, solange du keine wählst.</p>
+          </li>
+        </ul>
+      </div>
+      <figure class="reveal" style="margin:0;display:grid;justify-items:center;gap:1rem">
+        <div class="phone android">
+          <div class="screen">
+            <img src="assets/img/android/de/phone-case.jpg" alt="Der geschlossene Nussbaumkoffer auf einem Android-Phone: Messingscharniere links, Messingverschluss rechts, eingravierter Springer, „Chess Case“ und die Taste „Koffer öffnen“." width="720" height="1280" loading="lazy" decoding="async">
+          </div>
+          <span class="punch" aria-hidden="true"></span>
+        </div>
+        <figcaption class="fig-note">Der geschlossene Koffer auf einem Phone · Vorabversion für Android.</figcaption>
+      </figure>
+    </div>
+    <div class="wrap split" data-only="ios">
       <div class="reveal">
         <div class="section-head">
           <p class="eyebrow">Auch auf iPhone und iPad</p>
@@ -565,9 +800,32 @@
         <div style="position:relative;max-width:42rem;display:grid;gap:1rem">
           <p class="eyebrow">Datenschutz</p>
           <h2>Nur du, dein Gegenüber und das Brett.</h2>
-          <p>Chess Case hat kein Konto, keine Analyse-Tools und keinen eigenen Server und startet ohne Werbung. Deine Partien und Einstellungen bleiben auf dem Gerät.</p>
+          <p data-only="ios">Chess Case hat kein Konto, keine Analyse-Tools und keinen eigenen Server und startet ohne Werbung. Deine Partien und Einstellungen bleiben auf dem Gerät.</p>
+          <p data-only="android">Chess Case für Android folgt demselben Prinzip: kein Konto, keine Analyse-Tools, kein Werbe-SDK und kein eigener Server. Deine Partien und Einstellungen bleiben auf dem Gerät.</p>
         </div>
-        <div class="grid">
+        <div class="grid" data-only="android">
+          <div>
+            <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-cloud-off"/></svg>
+            <h3>Auf dem Gerät gespeichert</h3>
+            <p>Stellung, Uhren, Statistik, Trainingsfortschritt und deine Einstellungen liegen im privaten Speicher der App. Wer die App deinstalliert, löscht auch sie.</p>
+          </div>
+          <div>
+            <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-shield"/></svg>
+            <h3>Kein Zugriff nötig</h3>
+            <p>Keine Kamera, keine Kontakte, kein Standort, kein Mikrofon.</p>
+          </div>
+          <div>
+            <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-store"/></svg>
+            <h3>Google Play für Käufe</h3>
+            <p>Käufe laufen über Google Play Billing. Ich erhalte keine Zahlungsdaten.</p>
+          </div>
+          <div>
+            <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-eye-off"/></svg>
+            <h3>Kein Tracking</h3>
+            <p>Kein Analyse- oder Absturzbericht-SDK, nichts wird für Werbung geteilt. Die Datenschutzerklärung für Android erscheint vor der Veröffentlichung <a href="privacy-android-de.html" data-privacy="android">unter dieser Adresse</a>.</p>
+          </div>
+        </div>
+        <div class="grid" data-only="ios">
           <div>
             <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-cloud-off"/></svg>
             <h3>Auf dem Gerät gespeichert</h3>
@@ -586,7 +844,7 @@
           <div>
             <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-eye-off"/></svg>
             <h3>Gar kein Tracking</h3>
-            <p>Keine Drittanbieter-SDKs, nichts wird für Werbung geteilt. Details in der <a href="privacy-de.html">Datenschutzerklärung</a>.</p>
+            <p>Keine Drittanbieter-SDKs, nichts wird für Werbung geteilt. Details in der <a href="privacy-de.html" data-privacy="ios">Datenschutzerklärung</a>.</p>
           </div>
         </div>
       </div>
@@ -598,15 +856,38 @@
     <div class="wrap cta reveal">
       <img class="hero-icon" src="assets/icon-512.png" alt="" width="112" height="112">
       <h2>Du bist bald am Zug.</h2>
-      <p class="lede">Chess Case ist auf dem Weg in den App Store — gemacht für iPhone Duo, zu Hause auf jedem iPhone und iPad.</p>
-      <span class="store-badge" aria-label="Bald im App Store">
-        <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-apple"/></svg>
-        <span><small>Bald im</small><b>App Store</b></span>
-      </span>
-      <div class="req">
-        <span class="pill"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-hinge"/></svg> Entwickelt für iPhone Duo</span>
-        <span class="pill"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-phone"/></svg> iPhone &amp; iPad · ab iOS 18</span>
-        <span class="pill"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-globe"/></svg> Oberfläche auf Englisch</span>
+      <div class="platform-pick">
+        <small id="cta-platform">Wähl deine Plattform</small>
+        <div class="platform-switch" role="group" aria-labelledby="cta-platform">
+          <button type="button" data-set-platform="ios" aria-pressed="true">iOS</button>
+          <button type="button" data-set-platform="android" aria-pressed="false">Android</button>
+        </div>
+      </div>
+      <div class="platform-stack">
+        <p class="lede" data-variant="ios">Chess Case ist auf dem Weg in den App Store — gemacht für iPhone Duo, zu Hause auf jedem iPhone und iPad.</p>
+        <p class="lede" data-variant="android">Chess Case für Android ist in Entwicklung — gemacht für Foldables, zu Hause auf Android-Phones.</p>
+      </div>
+      <div class="platform-stack" style="justify-items:center">
+        <span class="store-badge" data-store="ios" data-variant="ios" aria-label="Bald im App Store">
+          <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-apple"/></svg>
+          <span><small>Bald im</small><b>App Store</b></span>
+        </span>
+        <span class="store-badge" data-store="android" data-variant="android" aria-label="Demnächst bei Google Play">
+          <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-store"/></svg>
+          <span><small>Demnächst bei</small><b>Google Play</b></span>
+        </span>
+      </div>
+      <div class="platform-stack">
+        <ul class="req" role="list" data-facts="ios" data-variant="ios">
+          <li class="pill"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-hinge"/></svg> Entwickelt für iPhone Duo</li>
+          <li class="pill"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-phone"/></svg> iPhone &amp; iPad · ab iOS 18</li>
+          <li class="pill"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-globe"/></svg> Oberfläche auf Englisch</li>
+        </ul>
+        <ul class="req" role="list" data-facts="android" data-variant="android">
+          <li class="pill"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-foldable"/></svg> Gemacht für faltbare Android-Phones</li>
+          <li class="pill"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-phone"/></svg> Android-Phones · ab Android 8.0</li>
+          <li class="pill"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-globe"/></svg> Oberfläche auf Deutsch und Englisch</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -618,17 +899,19 @@
     <div class="footer-links">
       <a href="index-de.html">Startseite</a>
       <a href="support-de.html">Support</a>
-      <a href="privacy-de.html">Datenschutz</a>
+      <a href="privacy-de.html" data-privacy="ios" data-privacy-label>Datenschutz – iOS</a>
+      <a href="privacy-android-de.html" data-privacy="android" data-privacy-label>Datenschutz – Android (vor Veröffentlichung)</a>
       <a href="impressum-de.html">Impressum</a>
-      <a href="index.html" hreflang="en" lang="en">English</a>
+      <a href="index.html" hreflang="en" lang="en" data-keep-platform>English</a>
     </div>
     <p class="footer-note tiny">
-      © <span id="year">2026</span> Peter Hildel · Chess Case steht in keiner Verbindung zu Apple Inc. Apple, iPhone, iPhone Duo,
-      iPad und App Store sind Marken der Apple&nbsp;Inc. Die Bildschirmfotos stammen aus dem iOS-Simulator.
+      Chess Case von Alpine Swift · © <span id="year">2026</span> Peter Hildel · Chess Case steht in keiner Verbindung zu Apple Inc. oder Google LLC.
+      Apple, iPhone, iPhone Duo, iPad und App Store sind Marken der Apple&nbsp;Inc. Android und Google Play sind Marken der Google&nbsp;LLC.
+      Die iOS-Bildschirmfotos stammen aus dem iOS-Simulator, die Android-Bildschirmfotos zeigen eine Vorabversion.
     </p>
   </div>
 </footer>
 
-<script src="assets/site.js?v=2" defer></script>
+<script src="assets/site.js?v=3" defer></script>
 </body>
 </html>
